@@ -1,6 +1,7 @@
 # deckorator
 
-
+Deckorator is a PORO (plain old Ruby object) implementation of the [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern) pattern.
+It can be easily integrated into Rails/Sinatra apps or any other Ruby project.
 
 ## Installation
 
@@ -80,6 +81,11 @@ $ rails g deckorator:decorator user
 ```
 
 This will create a `UserDecorator` in the `app/decorators` directory while also generating a stubbed test.
+
+## Related
+
+* <https://github.com/drapergem/draper>
+* <https://github.com/elabs/pundit>
 
 ## License
 
