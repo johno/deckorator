@@ -24,6 +24,28 @@ class FakeModelDecorator
   end
 end
 
+class FakeModelWithAssociation
+  def fake
+    FakeModel.new
+  end
+end
+
+class FakeModelWithAssociationDecorator
+  include Deckorator::Delegator
+  include Deckorator::Association
+
+  attr_accessor :decorated_object
+  decorate_association :fake
+
+  def initialize(object)
+    @decorated_object = object
+  end
+
+  def fake
+    FakeModel.new
+  end
+end
+
 class FakeController
   include Deckorator
 
