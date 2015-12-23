@@ -18,7 +18,7 @@ module Deckorator
 
       self.class.decorated_associations.each do |assoc|
         assoc_obj_or_objs = decorated_object.send(assoc)
-        klass = Deckorator::DeckoratorFinder.new(assoc_obj_or_objs).decorate
+        klass = Deckorator::DeckoratorFinder.new(assoc_obj_or_objs).deckorate
         instance_variable_set(
           "@_decorated_#{assoc}",
           klass.new(assoc_obj_or_objs)

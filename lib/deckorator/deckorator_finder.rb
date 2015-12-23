@@ -9,7 +9,7 @@ module Deckorator
       @object = record
     end
 
-    def decorate
+    def deckorate
       if object.nil?
         nil
       elsif object.class.respond_to?(:decorator_class)

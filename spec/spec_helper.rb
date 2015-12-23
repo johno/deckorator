@@ -4,6 +4,11 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'active_model/naming'
 
+RSpec.configure do |c|
+  c.filter_run focus: true
+  c.run_all_when_everything_filtered = true
+end
+
 class FakeModel
   def name
     'Fred Flinstone'
