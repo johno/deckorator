@@ -1,4 +1,4 @@
-# deckorator
+# deckorator [![Build Status](https://travis-ci.org/johnotander/deckorator.svg?branch=master)](https://travis-ci.org/johnotander/deckorator)
 
 Deckorator is a PORO (plain old Ruby object) implementation of the [Decorator](https://en.wikipedia.org/wiki/Decorator_pattern) pattern.
 It can be easily integrated into Rails/Sinatra apps or any other Ruby project.
