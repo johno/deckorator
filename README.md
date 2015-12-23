@@ -1,41 +1,94 @@
-# Deckorator
+# deckorator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/deckorator`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
-
-Add this line to your application's Gemfile:
 
 ```ruby
 gem 'deckorator'
 ```
 
-And then execute:
+Then run bundler
 
-    $ bundle
+```sh
+$ bundle
+```
 
-Or install it yourself as:
+Or, install it yourself as
 
-    $ gem install deckorator
+```sh
+$ gem install deckorator
+```
+
+#### With Rails
+
+Include `Deckorator` in the application controller
+
+```rb
+class ApplicationController < ActionController::Base
+  include Deckorator
+end
+```
+
+Then, run the install generator
+
+```sh
+$ rails g deckorator:install
+```
+
+An application decorator will be placed in `app/decorators`.
 
 ## Usage
 
-TODO: Write usage instructions here
+Using the `decorate` method in the controller
 
-## Development
+```rb
+class UsersController < ApplicationController
+  before_action :set_user
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+  def show
+    @user = decorate(@user)
+  end
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+  private
 
-## Contributing
+  def set_user
+    @user = User.find(params[:id])
+  end
+end
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/deckorator. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+#### Example decorator
 
+```rb
+class UserDecorator < ApplicationDecorator
+
+  def full_name
+    if first_name.blank? && last_name.blank?
+      'Unnamed User'
+    else
+      "#{first_name} #{last_name}".strip
+    end
+  end
+end
+```
+
+#### There's a generator
+
+```sh
+$ rails g deckorator:decorator user
+```
+
+This will create a `UserDecorator` in the `app/decorators` directory while also generating a stubbed test.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+MIT
 
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
