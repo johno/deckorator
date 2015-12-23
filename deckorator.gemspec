@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['johnotander@gmail.com', 'jake.m.mays@gmail.com']
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.description   = %q{Lightweight decorator objects using plain old Ruby objects.}
   spec.homepage      = 'https://github.com/johnotander/deckorator'
   spec.license       = 'MIT'
 
@@ -27,7 +27,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.11'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_dependency 'activesupport', '>= 3.0.0'
+  spec.add_development_dependency "activemodel", ">= 3.0.0"
+  spec.add_development_dependency "bundler", "~> 1.11"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
 end
