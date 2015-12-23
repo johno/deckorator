@@ -24,6 +24,11 @@ class FakeModelDecorator
   end
 end
 
+class FakeModelDeckorator
+  def initialize(_)
+  end
+end
+
 class FakeModelWithAssociation
   def fake
     FakeModel.new
@@ -31,6 +36,7 @@ class FakeModelWithAssociation
 end
 
 class FakeModelWithAssociationDecorator
+  include Deckorator
   include Deckorator::Delegator
   include Deckorator::Association
 
@@ -39,6 +45,7 @@ class FakeModelWithAssociationDecorator
 
   def initialize(object)
     @decorated_object = object
+    deckorator_define_association_methods
   end
 
   def fake

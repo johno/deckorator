@@ -6,6 +6,6 @@ describe Deckorator::Association do
 
   it 'decorates #fake with the FakeModelDecorator' do
     puts decorated_obj.inspect
-    expect(decorated_obj.fake).to be_a(FakeModelDecorator)
+    expect(decorated_obj.fake).to be_a(FakeModelDeckorator)
   end
 end
