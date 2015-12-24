@@ -1,5 +1,5 @@
 require 'active_support/concern'
-require 'deckorator/deckorator_finder'
+require 'deckorator/finder'
 
 module Deckorator
   module Association
@@ -18,7 +18,7 @@ module Deckorator
 
       self.class.decorated_associations.each do |assoc|
         assoc_obj_or_objs = decorated_object.send(assoc)
-        klass = Deckorator::DeckoratorFinder.new(assoc_obj_or_objs).deckorate
+        klass = Deckorator::Finder.find(assoc_obj_or_objs)
         instance_variable_set(
           "@_decorated_#{assoc}",
           klass.new(assoc_obj_or_objs)
