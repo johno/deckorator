@@ -1,27 +1,27 @@
 require 'deckorator/version'
 require 'deckorator/delegator'
 require 'deckorator/association'
-require 'deckorator/deckorator_finder'
+require 'deckorator/finder'
 
 module Deckorator
   class << self
-    def deckorate(record)
+    def decorate(record)
       if record.kind_of?(Array) || record.respond_to?(:all)
         decorator_array = []
         record.each do |r|
-          decorator_array << deckorate_object(r)
+          decorator_array << decorate_object(r)
         end
         decorator_array
       else
-        deckorate_object(record)
+        decorate_object(record)
       end
     end
   end
 
   private
 
-  def self.deckorate_object(record)
-    decorator = DeckoratorFinder.new(record).deckorate
+  def self.decorate_object(record)
+    decorator = Deckorator::Finder.find(record)
     decorator.new(record) if decorator
   end
 end

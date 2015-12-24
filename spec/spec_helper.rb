@@ -29,11 +29,6 @@ class FakeModelDecorator
   end
 end
 
-class FakeModelDeckorator
-  def initialize(_)
-  end
-end
-
 class FakeModelWithAssociation
   def fake
     FakeModel.new
@@ -68,7 +63,7 @@ class FakeController
 end
 
 class Post < Struct.new(:text); end
-class PostDeckorator < Struct.new(:post)
+class PostDecorator < Struct.new(:post)
   def display_text; "Bang! #{post.text}"; end
 end
 
@@ -81,10 +76,10 @@ class CommentDecorator < Struct.new(:comment); end
 
 class User < Struct.new(:username)
   def decorator_class
-    UserDecorator
+    AwesomeUserDecorator
   end
 end
-class UserDecorator < Struct.new(:user); end
+class AwesomeUserDecorator < Struct.new(:user); end
 
 class Blog < Struct.new(:title)
   extend ActiveModel::Naming
@@ -92,4 +87,4 @@ class Blog < Struct.new(:title)
     nil
   end
 end
-class BlogDeckorator < Struct.new(:blog); end
+class BlogDecorator < Struct.new(:blog); end
