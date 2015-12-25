@@ -1,6 +1,5 @@
 require 'deckorator/version'
 require 'deckorator/delegator'
-require 'deckorator/association'
 require 'deckorator/finder'
 
 module Deckorator
