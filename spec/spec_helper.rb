@@ -41,6 +41,10 @@ end
 class Post < Struct.new(:text); end
 class PostDecorator < Struct.new(:post)
   def display_text; "Bang! #{post.text}"; end
+
+  def comments
+    Deckorator.decorate([Comment.new, Comment.new])
+  end
 end
 
 class Comment < Struct.new(:text)
