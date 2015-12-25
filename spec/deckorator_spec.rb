@@ -5,7 +5,7 @@ describe Deckorator do
     expect(Deckorator::VERSION).not_to be nil
   end
 
-  describe '.deckorate' do
+  describe '.decorate' do
     context 'object is nil' do
       it { expect(Deckorator.decorate(nil)).to be_nil }
     end
@@ -30,6 +30,16 @@ describe Deckorator do
       it { expect(Deckorator.decorate(obj_array).first).to be_a PostDecorator }
       it { expect(Deckorator.decorate(obj_array).last).to be_a CommentDecorator }
       it { expect(Deckorator.decorate(obj_array)).to be_a Array }
+    end
+  end
+
+  describe 'decorated associations' do
+    let(:decorator) { Deckorator.decorate(Post.new('Testing 1 2 3')) }
+
+    it 'returns decorated objects' do
+      decorator.comments.each do |comment|
+        expect(comment).to be_a(CommentDecorator)
+      end
     end
   end
 end
