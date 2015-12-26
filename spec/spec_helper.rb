@@ -9,13 +9,7 @@ RSpec.configure do |c|
   c.run_all_when_everything_filtered = true
 end
 
-class FakeModel
-  def name
-    'Fred Flinstone'
-  end
-end
-
-class FakeModelDecorator
+class ApplicationDecorator
   include Deckorator::Delegator
 
   attr_accessor :decorated_object
@@ -23,7 +17,15 @@ class FakeModelDecorator
   def initialize(object)
     @decorated_object = object
   end
+end
 
+class FakeModel
+  def name
+    'Fred Flinstone'
+  end
+end
+
+class FakeModelDecorator < ApplicationDecorator
   def yelling_name
     "#{name.upcase}!!!"
   end
