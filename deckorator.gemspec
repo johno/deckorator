@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['John Otander', 'Jake Mays']
   spec.email         = ['johnotander@gmail.com', 'jake.m.mays@gmail.com']
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Lightweight decorator objects using plain old Ruby objects.}
+  spec.summary       = %q{Lightweight decorators using plain old Ruby objects.}
+  spec.description   = %q{Lightweight decorators using plain old Ruby objects.}
   spec.homepage      = 'https://github.com/johnotander/deckorator'
   spec.license       = 'MIT'
 
