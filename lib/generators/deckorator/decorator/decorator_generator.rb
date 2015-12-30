@@ -4,7 +4,7 @@ module Deckorator
       source_root File.expand_path(File.join(File.dirname(__FILE__), 'templates'))
 
       def create_decorator
-        template 'decorator.rb', File.join('app/policies', class_path, "#{file_name}_decorator.rb")
+        template 'decorator.rb', File.join('app/decorators', class_path, "#{file_name}_decorator.rb")
       end
     end
   end
