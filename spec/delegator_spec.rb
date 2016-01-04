@@ -13,4 +13,8 @@ describe Deckorator::Delegator do
       decorated_obj.trigger_method_missing
     }.to raise_error(NoMethodError)
   end
+
+  it 'delegates class methods' do
+    expect(decorated_obj.class.model_name).to eq('Fake')
+  end
 end
