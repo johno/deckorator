@@ -25,6 +25,10 @@ module Deckorator
     hide_action :decorate if respond_to?(:hide_action)
   end
 
+  def decorate(record)
+    Deckorator.decorate(record)
+  end
+
   private
 
   def self.decorate_object(record)

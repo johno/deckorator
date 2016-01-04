@@ -33,6 +33,12 @@ describe Deckorator do
     end
   end
 
+  describe '#decorate' do
+    let(:controller) { FakeController.new }
+    let(:post) { Post.new('Testing 1 2 3') }
+    it { expect(controller.decorate(post)).to be_a PostDecorator }
+  end
+
   describe 'decorated associations' do
     let(:decorator) { Deckorator.decorate(Post.new('Testing 1 2 3')) }
 
