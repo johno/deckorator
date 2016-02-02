@@ -82,6 +82,16 @@ $ rails g deckorator:decorator user
 
 This will create a `UserDecorator` in the `app/decorators` directory while also generating a stubbed test.
 
+#### Also using Pundit?
+
+You might want to add this to your **app/decorators/ApplicationDecorator**:
+
+```rb
+def self.policy_class
+  "#{decorated_object_class}Policy"
+end
+```
+
 ## Related
 
 * <https://github.com/drapergem/draper>
