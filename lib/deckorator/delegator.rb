@@ -10,6 +10,11 @@ module Deckorator
         super
     end
 
+    def to_param
+      decorated_object.respond_to?(:to_param) ?
+        decorated_object.to_param : super
+    end
+
     module ClassMethods
       def method_missing(method, *args, &block)
         decorated_object_class.respond_to?(method) ?
