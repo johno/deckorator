@@ -29,6 +29,10 @@ class FakeModel
   def self.model_name
     'Fake'
   end
+
+  def to_param
+    name
+  end
 end
 
 class FakeModelDecorator < ApplicationDecorator
