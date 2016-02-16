@@ -48,4 +48,18 @@ describe Deckorator do
       end
     end
   end
+
+  describe '#undecorate' do
+    let(:controller) { FakeController.new }
+    let(:object) { Post.new('Testing 1 2 3') }
+    let(:decorated) { PostDecorator.new(object) }
+
+    context 'when called on the decorated object' do
+      it { expect(decorated.undecorate).to eq(object) }
+    end
+
+    context 'when called from the controller' do
+      it { expect(controller.undecorate(decorated)).to eq(object) }
+    end
+  end
 end
