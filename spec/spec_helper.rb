@@ -11,6 +11,7 @@ end
 
 class ApplicationDecorator
   include Deckorator::Delegator
+  include Deckorator::Undecorator
 
   attr_accessor :decorated_object
   cattr_accessor :decorated_object_class
@@ -51,7 +52,7 @@ class FakeController
 end
 
 class Post < Struct.new(:text); end
-class PostDecorator < Struct.new(:post)
+class PostDecorator < ApplicationDecorator
   def display_text; "Bang! #{post.text}"; end
 
   def comments
