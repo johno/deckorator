@@ -63,7 +63,6 @@ end
 
 ```rb
 class UserDecorator < ApplicationDecorator
-
   def full_name
     if first_name.blank? && last_name.blank?
       'Unnamed User'
@@ -89,6 +88,43 @@ You might want to add this to your **app/decorators/ApplicationDecorator**:
 ```rb
 def self.policy_class
   "#{decorated_object_class}Policy"
+end
+```
+
+#### Add view helpers to your decorators
+
+```rb
+class UserDecorator < ApplicationDecorator
+  include ActionView::Helpers
+
+  def profile_card
+    content_tag_for(:div, decorated_object, class: :profile) do
+      gravatar_image(email)
+    end
+  end
+end
+```
+
+#### Include Rails path helpers
+
+```rb
+class UserDecorator < ApplicationDecorator
+  include Rails.application.routes.url_helpers
+  include ActionView::Helpers
+
+  def full_name_link
+    link_to(full_name, user_path(decorated_object), class: 'btn btn-primary')
+  end
+end
+```
+
+#### Decorate associations
+
+```rb
+class PostDecorator < ApplicationDecorator
+  def comments
+    Deckorator.decorate(decorated_object.comments)
+  end
 end
 ```
 
